@@ -36,88 +36,109 @@ footer {
 }
 
 
-/* Стили для динамической панели */
+/* Основные стили для киберпанк панели */
 .cyber-panel {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    width: 90vw;
-    min-width: 300px;
-    max-width: 100%;
-    margin: 0 auto;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid #00ff9d;
-    border-radius: 6px;
-    padding: 15px;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    z-index: 1000;
-    box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
-    box-sizing: border-box;
-    overflow-y: auto;
-    max-height: 80vh;
+  /* Позиционирование и размеры */
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  
+  /* Отступы от краев экрана */
+  top: 80px; /* Отступ под header */
+  bottom: 80px; /* Отступ над footer */
+  max-height: calc(100vh - 160px); /* Автоподстройка высоты */
+  
+  /* Стиль и оформление */
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #00ff9d;
+  box-shadow: 0 0 25px rgba(0, 255, 157, 0.3),
+              inset 0 0 15px rgba(0, 255, 157, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+  z-index: 100;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  /* Анимация */
+  animation: panelFadeIn 0.4s ease-out forwards;
 }
 
-/* Адаптация для очень маленьких экранов */
-@media (max-width: 375px) and (max-height: 812px) {
-    .cyber-panel {
-        width: 95vw;
-        padding: 12px;
-        font-size: 14px;
-        border-width: 1px;
-    }
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
+/* Стили для контента внутри панели */
 .cyber-panel h2 {
-    color: #00ff9d;
-    text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px #00ff9d;
+  color: #00ff9d;
+  text-shadow: 0 0 8px rgba(0, 255, 157, 0.5);
+  margin-bottom: 20px;
+  font-weight: 400;
 }
 
-.button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 30px;
+.cyber-panel p {
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
+/* Кнопки в киберпанк-стиле */
 .cyber-button {
-    background: transparent;
-    border: 2px solid #6B5B93;
-    color: white;
-    padding: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
+  background: rgba(0, 255, 157, 0.1);
+  border: 1px solid #00ff9d;
+  color: #00ff9d;
+  padding: 12px 24px;
+  margin: 10px 5px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .cyber-button:hover {
-    background: rgba(107, 91, 147, 0.3);
-    border-color: #FF6F61;
+  background: rgba(0, 255, 157, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
 }
 
-.back-btn {
-    cursor: pointer;
-    float: right;
-    color: #FF6F61;
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .cyber-panel {
+    width: 95%;
+    top: 60px;
+    bottom: 60px;
+    max-height: calc(100vh - 120px);
+    padding: 15px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
-.wallet-btn {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    background: rgba(255, 111, 97, 0.1);
-    border: 1px solid #FF6F61;
-    color: white;
-    text-align: left;
-    cursor: pointer;
+/* Для iPhone 13 Mini и аналогичных маленьких экранов */
+@media (max-width: 375px) {
+  .cyber-panel {
+    top: 50px;
+    bottom: 50px;
+    max-height: calc(100vh - 100px);
+    padding: 12px;
+    font-size: 14px;
+    border-width: 1px;
+  }
+  
+  .cyber-button {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
 }
 
-.wallet-btn img {
-    width: 20px;
-    vertical-align: middle;
-    margin-right: 10px;
-}
