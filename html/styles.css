@@ -46,7 +46,7 @@ footer {
   max-width: 800px;
   
   /* Отступы от краев экрана */
-  top: 80px; /* Отступ под header */
+  top: 120px; /* Отступ под header */
   bottom: 80px; /* Отступ над footer */
   max-height: calc(100vh - 160px); /* Автоподстройка высоты */
   
