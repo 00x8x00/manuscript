@@ -116,7 +116,7 @@ footer {
 @media (max-width: 768px) {
   .cyber-panel {
     width: 95%;
-    top: 60px;
+    top: 100px;
     bottom: 60px;
     max-height: calc(100vh - 120px);
     padding: 15px;
