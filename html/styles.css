@@ -120,8 +120,8 @@ footer {
     bottom: 60px;
     max-height: calc(100vh - 120px);
     padding: 15px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   }
 }
 
