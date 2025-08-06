@@ -11,6 +11,7 @@ html, body {
     width: 100%;
     height: 100%;
     z-index: 0;
+    pointer-events: none;  /* Игнорировать клики/наведения */
 }
 
 #content {
@@ -18,15 +19,24 @@ html, body {
     z-index: 1;
     text-align: center;
     color: rgba(255, 255, 255, 0.874);
-    font-size: 2em;
+    font-size: 1.5em;
     padding: 40px 20px;
     pointer-events: none;
 }
 
 #language-selector {
-    font-size: 0.5em;
-    margin-left: 20px;
-    pointer-events: auto;
+    display: flex;
+}
+
+#language-selector button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+}
+
+#language-selector button:hover {
+    transform: scale(1.1);
 }
 
 .main-content {
