@@ -1,0 +1,23 @@
+[
+    {
+        "id": "section-1",
+        "content": {
+            "en": "This is content for section 1.",
+            "ru": "Это контент для секции 1."
+        }
+    },
+    {
+        "id": "section-2",
+        "content": {
+            "en": "Section 2 is about blockchain ideas.",
+            "ru": "Секция 2 посвящена идеям на блокчейне."
+        }
+    },
+    {
+        "id": "section-3",
+        "content": {
+            "en": "Future of decentralized knowledge.",
+            "ru": "Будущее децентрализованных знаний."
+        }
+    }
+]

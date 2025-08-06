@@ -1,83 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MANUSCRIPT PROJECT </title>
-    <link rel="stylesheet" href="styles.css"> <!-- Подключение файла стилей -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MANUSCRIPT PROJECT</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div id="particles-js"></div> 
+    <div id="particles-js"></div>
 
-    <div id="content" class="content">MANUSCRIPT PROJECT</div>
-   
+    <header id="content" class="content">
+        MANUSCRIPT PROJECT
+        <select id="language-selector">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+        </select>
+    </header>
 
-
-    <!-- Добавьте перед закрывающим </body> -->
-    <div id="dynamic-panel" class="cyber-panel">
-        <!-- Начальный экран -->
-        <div id="main-screen">
-            <p>
-
-Это не очередной блокчейн-стартап — это живой организм, где рождаются идеи будущего. Каждое твоё предложение здесь:<br><br>
-
-✨ Кристаллизуется в уникальный NFT-артефакт — не просто токен, а цифровой слепок эволюции<br><br>
-✨ Заряжается энергией сообщества — ваши токены это кванты влияния<br><br>
-✨ Меняет реальность — лучшие проекты получают получают ресурсы для реализации<br><br>
-
-Мы выращиваем будущее. Мы строим первую глобальную систему, где ценность мысли измеряется не деньгами, а реальным влиянием. Здесь нет посредников — только прямое взаимодействие между теми, кто создаёт будущее.<br><br>
-
-Сейчас формируется новый мир.
-Технологии, экология, социальные инициативы, путь в космос — всё начинается с одной идеи.<br>
-
-Твой ход.<br><br>
-
-Подключай кошелёк → предлагай решение → получай поддержку → меняй правила игры.<br><br>
-
-Стань архитектором завтрашнего дня. Это не просто платформа — это новый способ принимать глобальные решения.<br>
-
-Наша миссия — объединить силу мысли всего человечества в едином фокусе, чтобы определить и реализовать следующий эволюционный шаг, создав основу для всеобщего процветания.
-            <div class="button-group">
-                <button id="show-ideas-btn" class="cyber-button">Смотреть без входа</button>
-                <button id="connect-wallet-btn" class="cyber-button">Подключить кошелёк</button>
-            </div>
-        </div>
-
-        <!-- Экран идей (изначально скрыт) -->
-        <div id="ideas-screen" style="display:none;">
-            <h2>ТОП ИДЕИ <span id="back-to-main" class="back-btn">←</span></h2>
-            <div id="ideas-list"></div>
-        </div>
-
-        <!-- Экран подключения (изначально скрыт) -->
-        <div id="wallet-screen" style="display:none;">
-            <h2>ПОДКЛЮЧЕНИЕ <span id="back-to-main-2" class="back-btn">←</span></h2>
-            <div id="wallet-options">
-                <button class="wallet-btn" data-wallet="phantom">
-                    <img src="https://phantom.app/favicon.ico" alt=""> Phantom
-                </button>
-                <button class="wallet-btn" data-wallet="solflare">
-                    <img src="https://solflare.com/favicon.ico" alt=""> Solflare
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
- 
-
+    <main class="main-content">
+        <section class="dynamic-section" id="section-1"></section>
+        <section class="dynamic-section" id="section-2"></section>
+        <section class="dynamic-section" id="section-3"></section>
+    </main>
 
     <footer>
         <p>&copy; 2025 Manuscript Project. All rights reserved.</p>
     </footer>
 
-    <!-- Подключение библиотеки для системы частиц -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
-    <!-- Конфигурация для системы частиц -->
     <script src="particles-config.js"></script>
-   
     <script src="app.js"></script>
-
 </body>
 </html>
