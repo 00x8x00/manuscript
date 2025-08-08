@@ -1,33 +1,27 @@
-const languageSelector = document.getElementById('language-selector');
-let currentLang = 'en';
-let jsonData = [];
+async function loadData(lang) {
+  try {
+    const response = await fetch('data.json');
+    const data = await response.json();
 
-// Загружаем JSON (можно заменить на fetch из блокчейна)
-async function fetchData() {
-    try {
-        const response = await fetch('data.json');
-        if (!response.ok) throw new Error('Failed to load JSON');
-        jsonData = await response.json();
-        updateSections();
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
+    const sections = ['section-1', 'section-2', 'section-3'];
 
-// Обновляем содержимое блоков
-function updateSections() {
-    jsonData.forEach(item => {
-        const section = document.getElementById(item.id);
-        if (section) {
-            section.textContent = item.content[currentLang] || item.content['en'];
-        }
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && data.languages[lang] && data.languages[lang][id]) {
+        el.innerText = data.languages[lang][id];
+      } else if (el) {
+        el.innerText = 'Content not available';
+      }
     });
+  } catch (err) {
+    console.error('Error loading data:', err);
+  }
 }
 
-// При смене языка
-languageSelector.addEventListener('change', () => {
-    currentLang = languageSelector.value;
-    updateSections();
+// Вызывается при загрузке и смене языка
+document.getElementById('language-selector').addEventListener('change', (e) => {
+  loadData(e.target.value);
 });
 
-fetchData();
+// При загрузке страницы
+loadData(document.getElementById('language-selector').value);

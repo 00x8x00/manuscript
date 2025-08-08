@@ -1,5 +1,3 @@
-// particles-config.js
-
 // Конфигурация частиц для particles.js
 particlesJS("particles-js", {
     particles: {

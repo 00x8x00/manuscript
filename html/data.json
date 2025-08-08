@@ -1,23 +1,14 @@
-[
-    {
-        "id": "section-1",
-        "content": {
-            "en": "This is content for section 1.",
-            "ru": "Это контент для секции 1."
-        }
+{
+  "languages": {
+    "en": {
+      "section-1": "This is a sample text for section 1.",
+      "section-2": "Here is some example content for section 2.",
+      "section-3": "And finally, sample text for section 3."
     },
-    {
-        "id": "section-2",
-        "content": {
-            "en": "Section 2 is about blockchain ideas.",
-            "ru": "Секция 2 посвящена идеям на блокчейне."
-        }
-    },
-    {
-        "id": "section-3",
-        "content": {
-            "en": "Future of decentralized knowledge.",
-            "ru": "Будущее децентрализованных знаний."
-        }
+    "ru": {
+      "section-1": "Это пример текста для секции 1.",
+      "section-2": "Здесь пример содержимого для секции 2.",
+      "section-3": "И, наконец, пример текста для секции 3."
     }
-]
+  }
+}
