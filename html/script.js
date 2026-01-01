@@ -342,11 +342,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Note: onclick handlers attached to window for simplicity in this MVP structure
             div.innerHTML = `
                 <p>"${item.text}"</p>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 15px;">
-                    <div style="display:flex; gap:10px; align-items:center;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 10px;">
+                    <div style="display:flex; gap:12px; align-items:center;">
                         <span id="likes-${item.id}" class="like-badge">💎 ${item.likes}</span>
                         <button class="vote-btn up" onclick="window.voteIdea('${item.id}', 1)">▲</button>
-                        <button class="vote-btn down" onclick="window.voteIdea('${item.id}', -1)">▼</button>
                     </div>
                 </div>
                 <div style="text-align:right; margin-top:5px;">
