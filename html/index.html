@@ -1,35 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>MANUSCRIPT PROJECT</title>
-    <link rel="stylesheet" href="styles.css" />
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANUSCRIPT PROJECT</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div id="particles-js"></div>
-    <select id="language-selector">
-        <option value="en">English</option>
-        <option value="ru">Русский</option>
-     </select>
-     
-    <header id="content" class="content">
-        MANUSCRIPT PROJECT
-    </header>
+    <div id="content" class="content">
+        <!-- HEADER: Brand + Controls -->
+        <header class="header-container">
+            <!-- Brand Logo Removed -->
+            <div class="header-controls" style="width: 100%; justify-content: flex-end;">
+                <!-- Wallet & Lang buttons will be styled simply -->
+                <div id="wallet-mini-section">
+                    <button id="connect-wallet-btn" class="simple-btn" data-i18n="connect_wallet_btn">Connect</button>
+                </div>
+                <div class="lang-switcher">
+                    <button id="lang-ru" class="lang-text-btn active">RU</button>
+                    <span>/</span>
+                    <button id="lang-en" class="lang-text-btn">EN</button>
+                </div>
+            </div>
+        </header>
 
-    <main class="main-content">
-        <section class="dynamic-section" id="section-1"></section>
-        <section class="dynamic-section" id="section-2"></section>
-        <section class="dynamic-section" id="section-3"></section>
-    </main>
+        <main class="main-wrapper">
+            <!-- HERO -->
+            <h1 data-i18n="header_title">MANUSCRIPT PROJECT</h1>
+
+            <!-- INFO BOX -->
+            <div id="project-info" class="simple-card">
+                <button id="close-info-btn" class="close-icon">&times;</button>
+                <h2 data-i18n="info_title">Manifesto</h2>
+                <p data-i18n="info_desc">
+                    A decentralized registry of ideas. Mint your thoughts on Solana.
+                </p>
+            </div>
+
+            <!-- CREATE FORM -->
+            <div id="nft-section" class="simple-card" style="display: none;">
+                <h2 data-i18n="create_idea_title">Next Evolutionary Step</h2>
+                <form id="create-nft-form">
+                    <!-- Type Selector -->
+                    <div class="type-selector">
+                        <label class="radio-label">
+                            <input type="radio" name="idea-type" value="human" checked>
+                            <span class="radio-custom human">For Humans</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="idea-type" value="robot">
+                            <span class="radio-custom robot">For Robots</span>
+                        </label>
+                    </div>
+
+                    <input type="text" id="idea-text" placeholder="..." class="simple-input" required
+                        data-i18n-placeholder="idea_placeholder">
+                    <button type="submit" class="simple-btn primary" data-i18n="mint_btn">Mint Proposal</button>
+                </form>
+                <div id="transaction-status"></div>
+            </div>
+
+            <!-- DUAL FEED -->
+            <div id="ideas-feed">
+                <h2 data-i18n="community_ideas_title">Метрики Цивилизации</h2>
+
+                <div class="dual-feed-container">
+                    <!-- ROBOTS COLUMN -->
+                    <div class="feed-column robot-col">
+                        <h3 data-i18n="feed_robots_title">Future: Robots 🤖</h3>
+                        <div id="feed-robots">
+                            <p class="loading-msg">Loading Code...</p>
+                        </div>
+                    </div>
+
+                    <!-- HUMANS COLUMN -->
+                    <div class="feed-column human-col">
+                        <h3 data-i18n="feed_humans_title">Legacy: Humans 🧬</h3>
+                        <div id="feed-humans">
+                            <p class="loading-msg">Loading DNA...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Manuscript Project. All rights reserved.</p>
+        <p>&copy; <span id="current-year"></span> Manuscript Project.</p>
     </footer>
 
+    <!-- Библиотеки -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@1.73.0/lib/index.iife.min.js"></script>
+
+    <!-- Основной скрипт -->
+    <script src="script.js"></script>
     <script src="particles-config.js"></script>
-    <script src="app.js"></script>
 </body>
+
 </html>
