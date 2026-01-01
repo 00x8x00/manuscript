@@ -18,9 +18,6 @@ html {
     background-color: #053312;
     overflow-x: hidden;
     height: 100%;
-    /* Отключаем резиновую прокрутку на iOS */
-    overscroll-behavior: none;
-    -webkit-overflow-scrolling: auto;
 }
 
 body {
@@ -28,18 +25,16 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
+    -webkit-overflow-scrolling: touch;
     margin: 0;
     padding: 0;
     font-family: 'Comfortaa', cursive;
     /* JOYFUL BRIGHT GRADIENT */
-    background: linear-gradient(135deg, #053312 30%, #2f0a35 70%) no-repeat;
+    background: linear-gradient(160deg, #053312 30%, #2f0a35 70%) no-repeat;
     background-attachment: fixed;
     color: #253b41;
     line-height: 1.6;
     min-height: 100vh;
-    /* Отключаем резиновую прокрутку (overscroll bounce) */
-    overscroll-behavior: none;
-    -webkit-overflow-scrolling: auto;
     /* Поддержка всех зон безопасности iPhone */
     padding-top: env(safe-area-inset-top, 0px);
     padding-right: env(safe-area-inset-right, 0px);
