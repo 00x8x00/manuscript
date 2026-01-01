@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const mockIdeas = [
             { text: "Квантовый Резонанс. Ребят, это реально — мгновенная передача данных через квантовую запутанность на любые расстояния. Будущее связи здесь!", type: "robot", likes: 5600, id: "9pR8s7tW5vX2yZ8aB4cE0fG6hI1jK3mN5pR7s9tW2vQ" },
             { text: "Эфирная Энергия: беспроводная передача электричества через ионосферу. Чисто, эффективно и без проводов. Проверено в симуляции.", type: "robot", likes: 13900, id: "7vX3yZ7aB1cE5fG0hI2jK4mN6pR8s9tW1vX4yZ2aB0cX" },
-            { text: "Нейронный Сад — это пространство, где ваши мысли буквально растут и эволюционируют. Коллективный разум в действии.", type: "human", likes: 13500, id: "1jK3mN5pR7s9tW2vX4yZ0aB8cE6fG1hI3jK5mN7pR9K" },
+            { text: "Нужно собрать весь пластик которым захломлена планета, аккуратно расплавить его и сделать огромную скульптуру как память о грязной эпохи, сжигать нельзя, слишком много выбросов в атмосферу.", type: "human", likes: 13500, id: "1jK3mN5pR7s9tW2vX4yZ0aB8cE6fG1hI3jK5mN7pR9K" },
             { text: "Архитектура Снов. Хочу проектировать миры, пока сплю. Кто со мной в коллективный нейроинтерфейс?", type: "human", likes: 12450, id: "5fG0lI2jK4mN6pR8s9tW1vX4yZ2aB0cE3fG6hI9jK2mN" },
             { text: "Сенсорная Сингулярность: объединение всех чувств в одну нейросеть для решения глобальных проблем.", type: "human", likes: 10890, id: "1jK3mN5pR7s9tW2vX4yZ0aB8cE6fG1hI3jK5mN7pR9s" },
             { text: "Галактический Манифест: переход к статусу межпланетного вида с сохранением биосфер других миров.", type: "human", likes: 9800, id: "4yZ0aB8cE6fG1hI3jK5mN7pR9s1tW3vX5yZ7aB9cE1fG" },
@@ -343,10 +343,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             div.innerHTML = `
                 <p>"${item.text}"</p>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 10px;">
-                    <div style="display:flex; gap:12px; align-items:center;">
-                        <span id="likes-${item.id}" class="like-badge">💎 ${item.likes}</span>
-                        <button class="vote-btn up" onclick="window.voteIdea('${item.id}', 1)">▲</button>
-                    </div>
+                    <span id="likes-${item.id}" class="like-badge">💎 ${item.likes}</span>
+                    <button class="vote-btn up" onclick="window.voteIdea('${item.id}', 1)">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3L4 11H9V21H15V11H20L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
                 <div style="text-align:right; margin-top:5px;">
                     <small>ID: ${item.id && item.id.length > 10 ? item.id.slice(0, 4) + '...' + item.id.slice(-4) : (item.id || 'N/A')}</small>

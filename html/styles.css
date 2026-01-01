@@ -488,6 +488,23 @@ h2 {
     margin-bottom: 40px;
 }
 
+/* Адаптивные размеры для заголовка идей на узких экранах */
+@media (max-width: 400px) {
+    #ideas-feed h2 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 350px) {
+    #ideas-feed h2 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1rem;
+    }
+}
+
 .dual-feed-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -515,6 +532,23 @@ h2 {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: stripeScroll 12s linear infinite;
+}
+
+/* Дополнительные адаптивные размеры для заголовков колонок */
+@media (max-width: 400px) {
+    .feed-column h3 {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 350px) {
+    .feed-column h3 {
+        font-size: 0.7rem;
+        margin-bottom: 4px;
+        letter-spacing: 0.3px;
+    }
 }
 
 /* VARIETY: Neon Orange & Cyan */
@@ -585,35 +619,68 @@ h2 {
 }
 
 .like-badge {
-    font-family: 'Comfortaa';
+    font-family: 'Comfortaa', cursive;
     font-weight: 700;
-    font-size: 0.75rem;
-    color: #888;
-    border: 1px solid #333;
-    padding: 2px 6px;
-    border-radius: 4px;
+    font-size: 1.0rem;
+    color: var(--neon-cyan);
+    background: rgba(0, 229, 255, 0.12);
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    padding: 6px 14px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.1);
 }
 
 .vote-btn {
-    width: 32px;
-    /* Increased from 26px */
-    height: 32px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #444;
-    color: #666;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: 0.2s;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    padding: 0;
+}
+
+.vote-btn svg {
+    width: 28px;
+    height: 28px;
+    color: var(--neon-cyan);
+    /* Тонкая светящаяся обводка самой стрелки */
+    filter: drop-shadow(0 0 1px var(--neon-cyan)) drop-shadow(0 0 3px rgba(0, 229, 255, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.vote-btn path {
+    fill: rgba(0, 229, 255, 0.15);
+    stroke: var(--neon-cyan);
+    stroke-width: 1.5px;
 }
 
 .vote-btn.up:hover {
-    color: var(--neon-cyan);
+    background: rgba(0, 229, 255, 0.15);
     border-color: var(--neon-cyan);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 229, 255, 0.2);
+}
+
+.vote-btn.up:hover svg {
     transform: scale(1.1);
-    animation: arrowBounceUp 0.6s infinite;
+    filter: drop-shadow(0 0 2px var(--neon-cyan)) drop-shadow(0 0 8px var(--neon-cyan));
+}
+
+.vote-btn.up:hover path {
+    fill: rgba(0, 229, 255, 0.3);
+}
+
+.vote-btn:active {
+    transform: scale(0.9) translateY(0);
 }
 
 /* HEADER ITEMS */
