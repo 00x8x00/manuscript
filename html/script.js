@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-    // === BLOCKCHAIN LOGIC ===
+    // --- UI ELEMENTS ---
     const connectBtn = document.getElementById('connect-wallet-btn');
     const nftSection = document.getElementById('nft-section');
     const createForm = document.getElementById('create-nft-form');
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         if (typeof solanaWeb3 !== 'undefined') {
             connection = new solanaWeb3.Connection("https://api.testnet.solana.com", 'confirmed');
-            console.log("Solana connection initialized (Testnet)");
+            // Connection established successfully
         } else {
             console.error("Critical: solanaWeb3 not found");
         }

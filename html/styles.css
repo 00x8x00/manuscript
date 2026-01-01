@@ -47,6 +47,33 @@ body {
     width: 95vw;
 }
 
+@media (max-width: 768px) {
+    #content {
+        padding: 10px;
+        width: 100vw;
+    }
+
+    .dual-feed-container {
+        gap: 8px;
+    }
+
+    .feed-column h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    #ideas-feed p {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+
+    #feed-humans .simple-card,
+    #feed-robots .simple-card {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+}
+
 /* --- ANIMATIONS --- */
 @keyframes fadeInUp {
     from {
@@ -365,18 +392,9 @@ h2 {
     padding: 20px;
     min-height: 120px;
     margin-bottom: 25px;
-    background: rgba(10, 15, 20, 0.15);
-    backdrop-filter: blur(5px);
-    /* Sync with simple-card */
-    border: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        box-shadow 0.4s ease,
-        background 0.4s ease;
-    transform: translateZ(0);
-    contain: content;
 }
 
 .simple-card.human-idea {
