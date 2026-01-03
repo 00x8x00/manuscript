@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             'error_tx': 'Ошибка протокола: ',
             'waiting_confirm': 'Подтверждение узлов...',
             'no_ideas': 'Нет данных.',
-            'wallet_install_alert': 'Ошибка инициализации Web3Auth!',
+            'no_ideas': 'Нет данных.',
             'connect_error': 'Сбой подключения',
             'view_in_explorer': 'Explorer',
             'idea_sent_status': 'Hash: ',
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             'error_tx': 'Protocol Error: ',
             'waiting_confirm': 'Confirming nodes...',
             'no_ideas': 'No data.',
-            'wallet_install_alert': 'Web3Auth Init Error!',
+            'no_ideas': 'No data.',
             'connect_error': 'Connection failure',
             'view_in_explorer': 'Explorer',
             'idea_sent_status': 'Hash: ',
@@ -132,11 +132,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const initWeb3Auth = async () => {
         try {
             if (connectBtn) {
-                // Блокируем кнопку до полной загрузки, чтобы избежать ошибок "Wallet not ready"
-                connectBtn.disabled = true;
-                connectBtn.style.opacity = '0.5';
-                connectBtn.style.cursor = 'wait';
-                connectBtn.innerText = t('loading_text');
+                // Ensure button is ready
+                connectBtn.disabled = false;
+                connectBtn.style.opacity = '1';
+                connectBtn.style.cursor = 'pointer';
             }
 
             const chainConfig = {
@@ -183,7 +182,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 connectBtn.disabled = false;
                 connectBtn.style.opacity = '1';
                 connectBtn.style.cursor = 'pointer';
-                connectBtn.innerText = "Error (Reload)";
             }
         }
     };
