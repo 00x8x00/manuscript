@@ -12,14 +12,15 @@
 <body>
     <div id="particles-js"></div>
     <div id="content" class="content">
-        <!-- HEADER: Brand + Controls -->
+        <!-- ШАПКА САЙТА: Содержит инструменты управления (кошелек и выбор языка) -->
         <header class="header-container">
-            <!-- Brand Logo Removed -->
+            <!-- Логотип бренда удален для соблюдения минималистичного дизайна -->
             <div class="header-controls" style="width: 100%; justify-content: flex-end;">
-                <!-- Wallet & Lang buttons will be styled simply -->
+                <!-- Секция авторизации: Кнопка для входа через Web3Auth (социалки + кошельки) -->
                 <div id="wallet-mini-section">
                     <button id="connect-wallet-btn" class="simple-btn" data-i18n="connect_wallet_btn">Connect</button>
                 </div>
+                <!-- Переключатель языков: Переключает интерфейс между Русским и Английским -->
                 <div class="lang-switcher">
                     <button id="lang-ru" class="lang-text-btn active">RU</button>
                     <span>/</span>
@@ -29,10 +30,10 @@
         </header>
 
         <main class="main-wrapper">
-            <!-- HERO -->
+            <!-- ГЛАВНЫЙ ЗАГОЛОВОК (HERO SECTION): Основное название проекта с эффектом глитча -->
             <h1 data-i18n="header_title">MANUSCRIPT PROJECT</h1>
 
-            <!-- INFO BOX -->
+            <!-- ИНФОРМАЦИОННЫЙ БЛОК: Краткий манифест проекта. Можно закрыть, нажав на крестик -->
             <div id="project-info" class="simple-card">
                 <button id="close-info-btn" class="close-icon">&times;</button>
                 <h2 data-i18n="info_title">Manifesto</h2>
@@ -41,11 +42,11 @@
                 </p>
             </div>
 
-            <!-- CREATE FORM -->
+            <!-- ФОРМА СОЗДАНИЯ ИДЕИ: Изначально скрыта (display: none), становится видимой после подключения кошелька -->
             <div id="nft-section" class="simple-card" style="display: none;">
                 <h2 data-i18n="create_idea_title">Next Evolutionary Step</h2>
                 <form id="create-nft-form">
-                    <!-- Type Selector -->
+                    <!-- Выбор типа идеи: Определяет, в какой колонке (Люди/Роботы) появится запись -->
                     <div class="type-selector">
                         <label class="radio-label">
                             <input type="radio" name="idea-type" value="human" checked>
@@ -61,15 +62,16 @@
                         data-i18n-placeholder="idea_placeholder">
                     <button type="submit" class="simple-btn primary" data-i18n="mint_btn">Mint Proposal</button>
                 </form>
+                <!-- Контейнер для вывода статуса транзакции в реальном времени (отправка, успех, ошибка) -->
                 <div id="transaction-status"></div>
             </div>
 
-            <!-- DUAL FEED -->
+            <!-- ЛЕНТА ИДЕЙ: Двухколоночный макет для разделения концепций -->
             <div id="ideas-feed">
                 <h2 data-i18n="community_ideas_title">Метрики Цивилизации</h2>
 
                 <div class="dual-feed-container">
-                    <!-- ROBOTS COLUMN -->
+                    <!-- КОЛОНКА РОБОТОВ: Сюда попадают идеи технического и алгоритмического характера -->
                     <div class="feed-column robot-col">
                         <h3 data-i18n="feed_robots_title">Future: Robots 🤖</h3>
                         <div id="feed-robots">
@@ -77,7 +79,7 @@
                         </div>
                     </div>
 
-                    <!-- HUMANS COLUMN -->
+                    <!-- КОЛОНКА ЛЮДЕЙ: Сюда попадают идеи, направленные на биологическое и социальное наследие -->
                     <div class="feed-column human-col">
                         <h3 data-i18n="feed_humans_title">Legacy: Humans 🧬</h3>
                         <div id="feed-humans">
@@ -96,6 +98,10 @@
     <!-- Библиотеки -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/@solana/web3.js@1.73.0/lib/index.iife.min.js"></script>
+
+    <!-- Web3Auth SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@web3auth/modal@9.4.0/dist/modal.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@web3auth/solana-provider@9.4.0/dist/solanaProvider.umd.min.js"></script>
 
     <!-- Основной скрипт -->
     <script src="script.js"></script>

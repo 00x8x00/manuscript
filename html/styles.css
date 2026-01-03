@@ -1,15 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Russo+One&display=swap');
 
-/* --- RESET & BASIC --- */
+/* --- СБРОС СТИЛЕЙ И БАЗОВЫЕ НАСТРОЙКИ --- */
 :root {
+    /* Основная цветовая палитра в неоновом стиле */
     --neon-green: #39ff14;
+    /* Ярко-зеленый (для текстов и акцентов) */
     --neon-purple: #bd00ff;
+    /* Насыщенный фиолетовый (для кнопок и свечения) */
     --neon-cyan: #00e5ff;
+    /* Цвет морской волны (для роботов и голосования) */
     --neon-orange: #ff5e00;
+    /* Неоновый оранжевый (для человеческого наследия) */
     --deep-bg: rgba(10, 15, 20, 0.15);
+    /* Полупрозрачный темный фон для карточек */
 }
 
 * {
+    /* Включаем правильный расчет размеров: padding и border не увеличивают ширину элемента */
     box-sizing: border-box;
 }
 
@@ -22,19 +29,25 @@ html {
 
 body {
     overflow-x: hidden;
+    /* Запрещаем горизонтальную прокрутку */
     width: 100%;
     height: 100%;
     position: relative;
     -webkit-overflow-scrolling: touch;
+    /* Плавная прокрутка на iOS */
     margin: 0;
     padding: 0;
     font-family: 'Comfortaa', cursive;
-    /* JOYFUL BRIGHT GRADIENT */
+    /* Основной шрифт сайта */
+
+    /* ФОНОВЫЙ ГРАДИЕНТ: создает глубокий переход от темно-зеленого к фиолетовому */
     background: linear-gradient(160deg, #053312 30%, #2f0a35 70%) no-repeat;
     background-attachment: fixed;
+    /* Фон остается неподвижным при прокрутке */
     color: #253b41;
     line-height: 1.6;
     min-height: 100vh;
+    /* Минимальная высота - на весь экран */
     /* Поддержка всех зон безопасности iPhone */
     padding-top: env(safe-area-inset-top, 0px);
     padding-right: env(safe-area-inset-right, 0px);
@@ -196,7 +209,9 @@ body {
     }
 }
 
-/* --- ANIMATIONS --- */
+/* --- АНИМАЦИИ (Keyframes) --- */
+
+/* Анимация появления элементов: плавно выплывают снизу вверх */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -209,6 +224,7 @@ body {
     }
 }
 
+/* Эффект бесконечной прокрутки полосатого фона (используется в заголовках) */
 @keyframes stripeScroll {
     0% {
         background-position: 0 0;
@@ -219,6 +235,7 @@ body {
     }
 }
 
+/* Небольшое покачивание стрелки вверх при наведении */
 @keyframes arrowBounceUp {
 
     0%,
@@ -231,6 +248,7 @@ body {
     }
 }
 
+/* Небольшое покачивание стрелки вниз (если понадобится) */
 @keyframes arrowBounceDown {
 
     0%,
@@ -244,7 +262,7 @@ body {
 }
 
 
-/* --- HEADER --- */
+/* --- ШАПКА САЙТА (HEADER) --- */
 .header-container {
     display: flex;
     justify-content: flex-end;
@@ -298,7 +316,7 @@ body {
     }
 }
 
-/* --- HERO TITLE --- */
+/* --- ГЛАВНЫЙ ЗАГОЛОВОК (HERO) --- */
 .hero-section {
     text-align: center;
     margin-bottom: 50px;
@@ -379,35 +397,44 @@ h2 {
     animation: stripeScroll 10s linear infinite;
 }
 
-/* --- CUT-CORNER CARDS --- */
+/* --- КАРТОЧКИ СО СКОШЕННЫМИ УГЛАМИ (Stealth Cards) --- */
 .simple-card {
     background: rgba(10, 15, 20, 0.15);
+    /* Темный, почти прозрачный фон */
     backdrop-filter: blur(5px);
-    /* Optimized from 10px for performance */
+    /* Эффект матового стекла */
     border: 1px solid rgba(255, 255, 255, 0.05);
-    /* Stealth edge */
+    /* Едва заметная рамка */
+
+    /* ГЕОМЕТРИЯ: Сложная форма со скошенными углами через clip-path */
     clip-path: polygon(25px 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%, 0 25px);
+
     padding: 30px;
     margin-bottom: 30px;
     position: relative;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    /* Slightly reduced for paint perf */
+
+    /* Плавные переходы для всех интерактивных свойств */
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
         box-shadow 0.4s ease,
         background 0.4s ease,
         border-color 0.4s ease;
+
     animation: fadeInUp 0.7s ease-out forwards;
+    /* Анимация появления при загрузке */
     transform: translateZ(0);
-    /* Force GPU acceleration */
+    /* Оптимизация для видеокарты (Hardware Acceleration) */
     will-change: transform, box-shadow;
+    /* Подсказка браузеру для плавной анимации */
     contain: content;
-    /* Layout isolation */
+    /* Оптимизация отрисовки */
     word-wrap: break-word;
+    /* Автоперенос длинных слов */
     overflow-x: hidden;
     color: #ffffff;
 }
 
-/* CYBERPUNK BORDER DRAW EFFECT */
+/* КИБЕРПАНК-ЭФФЕКТ: Световая обводка карточки при наведении (через псевдоэлемент) */
 .simple-card::before {
     content: "";
     position: absolute;
@@ -416,22 +443,25 @@ h2 {
     right: 0;
     bottom: 0;
     padding: 2px;
-    /* Border thickness */
+    /* Толщина светящейся линии */
+
+    /* Цветной градиент, который будет вращаться */
     background: conic-gradient(from var(--angle), transparent 70%, var(--neon-green), var(--neon-purple), var(--neon-cyan));
+
+    /* Маска, чтобы оставить только тонкую рамку */
     clip-path: polygon(25px 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%, 0 25px);
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
-    mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     mask-composite: exclude;
+
     opacity: 0;
+    /* Изначально рамка скрыта */
     transition: opacity 0.4s ease;
     pointer-events: none;
 }
 
+/* РЕГИСТРАЦИЯ ПЕРЕМЕННОЙ УГЛА: Позволяет анимировать градиент (conic-gradient) */
 @property --angle {
     syntax: '<angle>';
     initial-value: 0deg;
@@ -446,7 +476,9 @@ h2 {
 
 .simple-card:hover::before {
     opacity: 1;
+    /* Показываем рамку при наведении мыши */
     animation: rotateBorder 2s linear infinite;
+    /* Запускаем бесконечное вращение света */
 }
 
 #project-info:hover,
@@ -459,7 +491,7 @@ h2 {
     z-index: 10;
 }
 
-/* --- FORMS --- */
+/* --- ФОРМЫ И ВВОД ДАННЫХ --- */
 .simple-input {
     width: 100%;
     padding: 15px;
@@ -479,7 +511,7 @@ h2 {
     background: rgba(10, 30, 20, 0.8);
 }
 
-/* --- BUTTONS (VARIETY COLOR: PURPLE) --- */
+/* --- КНОПКИ (Акцентный цвет: Фиолетовый) --- */
 .simple-btn {
     background: transparent;
     border: 1px solid var(--neon-purple);
@@ -512,7 +544,7 @@ h2 {
     box-shadow: 0 0 40px #fff;
 }
 
-/* --- DUAL FEED --- */
+/* --- ДВОЙНАЯ ЛЕНТА ИДЕЙ --- */
 #ideas-feed {
     text-align: center;
 }
@@ -597,24 +629,32 @@ h2 {
     /* Cyan */
 }
 
+/* СТИЛИЗАЦИЯ КАРТОЧЕК В ЛЕНТЕ: Специальные настройки для идей в колонках */
 #feed-humans .simple-card,
 #feed-robots .simple-card {
     padding: 20px;
     min-height: 120px;
     margin-bottom: 25px;
     display: flex;
+    /* Используем Flexbox для удобного выравнивания содержимого внутри */
     flex-direction: column;
+    /* Элементы внутри карточки располагаются вертикально */
     justify-content: space-between;
+    /* Распределяем контент: текст сверху, кнопка снизу */
 }
 
+/* ЦВЕТОВЫЕ ИНДИКАТОРЫ: Верхняя граница карточки подчеркивает тип идеи */
 .simple-card.human-idea {
     border-top: 3px solid #ff5e00;
+    /* Оранжевый для людей */
 }
 
 .simple-card.robot-idea {
     border-top: 3px solid #00e5ff;
+    /* Голубой для роботов */
 }
 
+/* ЭФФЕКТЫ ХОВЕРА: Карточки светятся соответствующим цветом при наведении */
 #feed-humans .human-idea:hover {
     background: rgba(255, 0, 255, 0.25);
     border-color: #ff00ff;
@@ -645,7 +685,7 @@ h2 {
     hyphens: auto;
 }
 
-/* VOTING */
+/* --- СИСТЕМА ГОЛОСОВАНИЯ --- */
 .vote-section {
     display: flex;
     justify-content: space-between;
@@ -722,7 +762,7 @@ h2 {
     transform: scale(0.9) translateY(0);
 }
 
-/* HEADER ITEMS */
+/* --- ЭЛЕМЕНТЫ УПРАВЛЕНИЯ В ШАПКЕ --- */
 .lang-switcher button {
     background: transparent;
     border: none;
