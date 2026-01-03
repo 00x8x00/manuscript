@@ -128,11 +128,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     let solanaWallet = null;
 
     // Инициализация Web3Auth
+    // Инициализация Web3Auth
     const initWeb3Auth = async () => {
         try {
+            if (connectBtn) {
+                // Блокируем кнопку до полной загрузки, чтобы избежать ошибок "Wallet not ready"
+                connectBtn.disabled = true;
+                connectBtn.style.opacity = '0.5';
+                connectBtn.style.cursor = 'wait';
+                connectBtn.innerText = t('loading_text');
+            }
+
             const chainConfig = {
                 chainNamespace: "solana",
-                chainId: "0x3", // Testnet
+                chainId: "0x2", // Testnet (Correct ID)
                 rpcTarget: "https://api.testnet.solana.com",
                 displayName: "Solana Testnet",
                 blockExplorer: "https://explorer.solana.com/?cluster=testnet",
@@ -140,93 +149,45 @@ document.addEventListener('DOMContentLoaded', async () => {
                 tickerName: "Solana",
             };
 
-            // Создаем провайдер приватного ключа для Solana
-            // Это обязательно для новых версий SDK
             const privateKeyProvider = new window.SolanaProvider.SolanaPrivateKeyProvider({
                 config: { chainConfig: chainConfig }
             });
 
-            // Настройка Web3Auth для Solana Testnet
             web3auth = new window.Modal.Web3Auth({
                 clientId: WEB3AUTH_CLIENT_ID,
                 privateKeyProvider: privateKeyProvider,
                 web3AuthNetwork: "sapphire_devnet"
             });
 
-            console.log("Запуск initModal...");
             await web3auth.initModal();
-            console.log("Web3Auth инициализирован успешно.");
 
-            // Инициализация соединения Solana (Testnet)
             if (typeof solanaWeb3 !== 'undefined') {
                 connection = new solanaWeb3.Connection("https://api.testnet.solana.com", 'confirmed');
             }
 
-            // Если пользователь уже вошел
+            // Разблокируем интерфейс после успеха
+            if (connectBtn) {
+                connectBtn.disabled = false;
+                connectBtn.style.opacity = '1';
+                connectBtn.style.cursor = 'pointer';
+                updateTexts(); // Вернуть правильный текст кнопки
+            }
+
             if (web3auth.connected) {
-                console.log("Пользователь уже авторизован.");
                 await setupWallet();
             }
         } catch (error) {
-            console.error("ОШИБКА Web3Auth:", error);
-            console.error("Детали:", JSON.stringify(error, null, 2));
-            showDiagnosticModal(error);
+            console.error("Web3Auth Init Error:", error);
+            // При фатальной ошибке оставляем кнопку заблокированной или возвращаем как есть
+            if (connectBtn) {
+                connectBtn.disabled = false;
+                connectBtn.style.opacity = '1';
+                connectBtn.style.cursor = 'pointer';
+                connectBtn.innerText = "Error (Reload)";
+            }
         }
     };
 
-    // Функция отображения диагностического окна
-    const showDiagnosticModal = (error) => {
-        const modalId = 'diagnostic-modal';
-        let modal = document.getElementById(modalId);
-
-        if (!modal) {
-            modal = document.createElement('div');
-            modal.id = modalId;
-            modal.style.cssText = `
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0,0,0,0.85); z-index: 10000;
-                display: flex; justify-content: center; align-items: center;
-                font-family: 'Courier New', monospace; color: #0f0;
-            `;
-            document.body.appendChild(modal);
-        }
-
-        const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-        const errorMsg = error.message || JSON.stringify(error);
-
-        let helpText = "";
-        let actionStep = "";
-
-        if (errorMsg.includes("Failed to fetch wallet registry") || errorMsg.includes("400")) {
-            helpText = "БЛОКИРОВКА СОЕДИНЕНИЯ (Whitelist)";
-            actionStep = `
-                <div style="margin-top: 15px; border: 1px solid #f00; padding: 10px; background: rgba(50,0,0,0.5);">
-                    <strong style="color: #ff4444;">ТРЕБУЕТСЯ НАСТРОЙКА:</strong>
-                    <ol style="text-align: left; margin-left: 20px;">
-                        <li>Зайдите в <a href="https://dashboard.web3auth.io" target="_blank" style="color: #fff; text-decoration: underline;">Web3Auth Dashboard</a></li>
-                        <li>Откройте проект и найдите раздел <strong>Whitelisted Domains</strong></li>
-                        <li>Добавьте текущий адрес: <code style="background: #333; padding: 2px;">${window.location.origin}</code></li>
-                        <li>Сохраните и обновите эту страницу.</li>
-                    </ol>
-                </div>
-            `;
-        } else {
-            helpText = "Ошибка инициализации";
-            actionStep = `<p>Проверьте консоль браузера для деталей.</p>`;
-        }
-
-        modal.innerHTML = `
-            <div style="background: #111; border: 2px solid #0f0; padding: 30px; max-width: 600px; text-align: center; box-shadow: 0 0 20px #0f0;">
-                <h2 style="margin-top: 0; color: #ff4444;">⚠ ${helpText}</h2>
-                <p style="color: #ccc;">Система не смогла подключиться к Web3Auth.</p>
-                <div style="background: #222; padding: 10px; margin: 15px 0; font-size: 12px; color: #aaa; overflow-wrap: break-word;">
-                    ${errorMsg}
-                </div>
-                ${actionStep}
-                <button onclick="document.getElementById('${modalId}').remove()" style="margin-top: 20px; padding: 10px 20px; background: #0f0; color: #000; border: none; cursor: pointer; font-weight: bold;">ЗАКРЫТЬ</button>
-            </div>
-        `;
-    };
 
     const setupWallet = async () => {
         try {
@@ -239,6 +200,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (connectBtn) {
                 connectBtn.innerText = t('wallet_connected_btn');
                 connectBtn.disabled = true;
+                connectBtn.style.opacity = '0.8';
+                connectBtn.style.cursor = 'default';
             }
             if (nftSection) nftSection.style.display = 'block';
 
@@ -261,9 +224,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 await setupWallet();
             }
         } catch (err) {
-            console.error("Ошибка при входе через Web3Auth:", err);
-            // Используем диагностическое окно для отображения проблем подключения
-            showDiagnosticModal(err);
+            console.error("Connect Error:", err);
+            // Если Web3Auth не готов или ошибка сети
+            alert(t('connect_error') + ": " + (err.message || "Unknown"));
         }
     };
 
