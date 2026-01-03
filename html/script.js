@@ -149,12 +149,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Настройка Web3Auth для Solana Testnet
             web3auth = new window.Modal.Web3Auth({
                 clientId: WEB3AUTH_CLIENT_ID,
-                privateKeyProvider: privateKeyProvider, // Передаем провайдер сюда
-                web3AuthNetwork: "sapphire_devnet" // "cyan", "testnet", "mainnet" и т.д.
+                privateKeyProvider: privateKeyProvider,
+                web3AuthNetwork: "testnet"
             });
 
+            console.log("Запуск initModal...");
             await web3auth.initModal();
-            console.log("Web3Auth инициализирован.");
+            console.log("Web3Auth инициализирован успешно.");
 
             // Инициализация соединения Solana
             if (typeof solanaWeb3 !== 'undefined') {
@@ -163,11 +164,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Если пользователь уже вошел
             if (web3auth.connected) {
+                console.log("Пользователь уже авторизован.");
                 await setupWallet();
             }
         } catch (error) {
             console.error("Ошибка инициализации Web3Auth:", error);
-            // alert("Ошибка инициализации: " + error.message); // Для отладки можно раскомментировать
+            console.error("Детали:", JSON.stringify(error, null, 2));
+            // Показываем пользователю понятное сообщение если это localhost
+            if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+                alert("Ошибка Web3Auth: " + (error.message || error) + "\n\nСовет: Проверьте, добавлен ли http://localhost:8080 в Whitelist в дашборде Web3Auth.");
+            } else {
+                alert("Authentication Error: " + (error.message || error));
+            }
         }
     };
 
