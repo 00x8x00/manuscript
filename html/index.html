@@ -7,13 +7,10 @@
     <meta name="theme-color" content="#053312">
     <title>MANUSCRIPT PROJECT</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 
 <body>
-    <!-- ФОН: Анимированная сетка частиц (Neural Network) -->
     <div id="particles-js"></div>
-
     <div id="content" class="content">
         <!-- ШАПКА САЙТА: Содержит инструменты управления (кошелек и выбор языка) -->
         <header class="header-container">
@@ -99,17 +96,15 @@
     </footer>
 
     <!-- Библиотеки -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/@solana/web3.js@1.73.0/lib/index.iife.min.js"></script>
 
     <!-- Web3Auth SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@web3auth/modal@9.4.0/dist/modal.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@web3auth/solana-provider@9.4.0/dist/solanaProvider.umd.min.js"></script>
 
-    <!-- Modules -->
-    <script src="script.js"></script> <!-- Defines window.App -->
-    <script src="ui.js"></script>
-    <script src="auth.js"></script>
-    <script src="blockchain.js"></script>
+    <!-- Основной скрипт -->
+    <script src="script.js"></script>
     <script src="particles-config.js"></script>
 </body>
 

@@ -1,106 +1,111 @@
-/* Particles.js config */
+// Конфигурация частиц для particles.js
 particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 60,
-      "density": {
-        "enable": true,
-        "value_area": 800
-      }
-    },
-    "color": {
-      "value": "#39ff14"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      }
-    },
-    "opacity": {
-      "value": 0.3,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 3,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#39ff14",
-      "opacity": 0.2,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 2,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "grab"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 140,
-        "line_linked": {
-          "opacity": 1
+    particles: {
+        number: {
+            value: 100, // Количество частиц, которые будут отображаться
+            density: {
+                enable: true, // Включить плотность частиц
+                value_area: 800 // Площадь, в которой распределяются частицы (больше значение - менее плотно)
+            }
+        },
+        color: {
+            value: ["#FF6F61", "#6B5B93", "#88B04B", "#F7CAC9", "#92A8D1"],  // Массив цветов для частиц (можно использовать несколько цветов)
+        },
+        shape: {
+            type: "circle", // Форма частиц: можно использовать "circle", "edge", "triangle", "polygon", "star", "image"
+            stroke: {
+                width: 0, // Толщина обводки частиц (0 - без обводки)
+                color: "#000000" // Цвет обводки частиц
+            },
+            polygon: {
+                nb_sides: 5 // Количество сторон, если форма - многоугольник
+            },
+            image: {
+                src: "img/github.svg", // Путь к изображению, если форма - изображение
+                width: 100, // Ширина изображения
+                height: 100 // Высота изображения
+            }
+        },
+        opacity: {
+            value: 0.5, // Основная прозрачность частиц
+            random: false, // Использовать ли случайную прозрачность для каждой частицы
+            anim: {
+                enable: false, // Включить анимацию изменения прозрачности
+                speed: 1, // Скорость изменения прозрачности
+                opacity_min: 0.1, // Минимальная прозрачность частиц
+                sync: false // Синхронизация анимации прозрачности между частицами
+            }
+        },
+        size: {
+            value: 4, // Основной размер частиц
+            random: true, // Использовать ли случайный размер для каждой частицы
+            anim: {
+                enable: false, // Включить анимацию изменения размера частиц
+                speed: 40, // Скорость изменения размера
+                size_min: 0.1, // Минимальный размер частиц
+                sync: false // Синхронизация анимации размера между частицами
+            }
+        },
+        line_linked: {
+            enable: true, // Включить соединение частиц линиями
+            distance: 150, // Максимальное расстояние для соединения линий между частицами
+            color: "#FF8C00", // Цвет соединительных линий
+            opacity: 1, // Прозрачность линий
+            width: 0.1 // Толщина линий
+        },
+        move: {
+            enable: true, // Включить движение частиц
+            speed: 1, // Скорость движения частиц
+            direction: "top", // Направление движения частиц ("none", "top", "top-right", "right", "bottom-right", "bottom", "bottom-left", "left", "top-left")
+            random: false, // Использовать ли случайное направление движения
+            straight: false, // Двигаться ли прямо (true - да, false - нет)
+            out_mode: "bounce", // Поведение частиц, когда они выходят за границы ("out" - исчезают, "bounce" - отскакивают)
+            bounce: false, // Включить ли отскок частиц от границ
+            attract: {
+                enable: false, // Включить ли притяжение между частицами
+                rotateX: 600, // Ось вращения по X для притяжения
+                rotateY: 1200 // Ось вращения по Y для притяжения
+            }
         }
-      },
-      "bubble": {
-        "distance": 400,
-        "size": 40,
-        "duration": 2,
-        "opacity": 8,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 200,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
-    }
-  },
-  "retina_detect": true
+    },
+    interactivity: {
+        detect_on: "canvas", // Область, в которой будет обнаруживаться взаимодействие ("canvas" или "window")
+        events: {
+            onhover: {
+                enable: true, // Включить взаимодействие при наведении курсора
+                mode: "grab" // Режим взаимодействия при наведении ("grab", "bubble", "repulse", "push", "remove")
+            },
+            onclick: {
+                enable: true, // Включить взаимодействие при клике
+                mode: "push" // Режим взаимодействия при клике ("push" - добавление частиц, "remove" - удаление частиц)
+            },
+            resize: true // Изменять ли размеры частиц при изменении размера окна браузера
+        },
+        modes: {
+            grab: {
+                distance: 200, // Расстояние для захвата при наведении
+                line_linked: {
+                    opacity: 1 // Прозрачность линий при захвате частиц
+                }
+            },
+            bubble: {
+                distance: 400, // Расстояние для эффекта пузырька при наведении
+                size: 40, // Размер пузырька
+                duration: 2, // Длительность анимации пузырька
+                opacity: 8, // Прозрачность пузырька
+                speed: 3 // Скорость анимации пузырька
+            },
+            repulse: {
+                distance: 200, // Расстояние для отталкивания частиц при наведении
+                duration: 1 // Длительность анимации отталкивания
+            },
+            push: {
+                particles_nb: 4 // Количество частиц, добавляемых при клике
+            },
+            remove: {
+                particles_nb: 4 // Количество частиц, удаляемых при клике
+            }
+        }
+    },
+    retina_detect: true, // Включить поддержку Retina дисплеев для лучшего отображения
 });
